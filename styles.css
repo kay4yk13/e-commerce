@@ -1,192 +1,220 @@
-body {background: #F7D62B;}
+/* Main css for whole doc */
+body {
+	background: #f7d62b;
+	width: 94vw;
+	margin: 0 3vw;
+}
 
-/* name of page for each page */
-.content-title {
-    color: white;
-    text-transform: uppercase;
-    position: relative;
-    font-size: 40px;
-    text-decoration-line: underline;
-    text-decoration-style: double;
+/* весь хэдер с флексом */
+.header-container {
+	margin: 2% 3%;
+	/* width: 100vw; */
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	flex-direction: row;
+	padding-bottom: 6%;
 }
-/* centered text on index age */
-h1 {
-    color: white;
-    text-align: center;
-    text-shadow: 2px 2px red;
-    font-size: 70px;
-    margin: 120px;
-  }
-  /* headline of benefits on index page */
-h2 {
-    max-width: 80%;
-    font-size: 24px;
-    color: black;
-    text-align: center;
-}
-.header-cntainer {
-    background-color: aquamarine;
-}
-/* benefits text on index page */
-p {
-    max-width: 80%;
-    font-size: 20px;
-    color: black;
-    text-align: left;
-    text-shadow: 4px 4px 4px red;
+
+/* стили для лого, нава и корзины как дочерних элементов флексбокса header-container*/
+.header-childelement {
+	text-align: center;
 }
 .header-logo {
-    position: relative;
-    display: flex;
-    align-content: left;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
-    font-size: 24px;
+    width: 200px;
+	position: relative;
+	display: flex;
+	align-content: left;
+	flex-direction: row;
+	align-items: center;
+	text-decoration: none;
+	font-size: 24px;
 }
-
 .header-logo-icon-wrapper {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    background: black;
-    margin: 40px;
+	position: relative;
+	width: 45px;
+	height: 45px;
+	background: black;
 }
 .header-logo-icon-text {
-    position: absolute;
-    color: white;
-    font-family: "Roboto";
-    font-style: normal;
-    text-decoration: none;
-    vertical-align: middle;
-    left: 6px;
-    top: 8px;
+	position: absolute;
+	color: white;
+	font-family: "Roboto";
+	font-style: normal;
+	text-decoration: none;
+	vertical-align: middle;
+	left: 6px;
+	top: 8px;
 }
 .header-logo-text {
-    position: relative;
-    text-decoration: none;
-    font-style: normal;
-    color: black;
+	position: relative;
+	text-decoration: none;
+	font-style: normal;
+	color: black;
 }
-.cart-logo {
-        position: relative;
-        width: 45px;
-        height: 45px;
-} 
-
-.flex-child-element-nav  {
-    position: relative;
-    padding-left: 70px;
-    text-decoration: none;
-    width: 60%;
-}
-
 .navbar a {
-    font-family: 'Monda';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 39px;
-    color: black;
-    text-decoration: none;
-    padding-left: 40px;
+	font-family: "Monda";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 39px;
+	color: black;
+	text-decoration: none;
+	padding-left: 40px;
 }
 .navbar a:hover {
-    color: white;
+	color: white;
 }
 .navbar a:active {
-    text-decoration: underline;
+	text-decoration: underline;
 }
-.header-container {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    flex-direction: row;
+.button:first-child {
+	padding-left: 0px;
 }
-.flex-child-element {
-    flex: 1;
-    position: relative;
-    text-align: center;
-    max-width: 40%;
-}
-  
-.benefits{
-    display: flex;
-    max-width: 85%;
-    position: relative;
-    margin: 0 auto;
-    padding: 2em;
-    justify-content: space-between;
-}
-.benefits-text {
-    text-align: center;
-}
-
-.product-item {
-    position: relative;
-    width: 25%;
-    background-color: black;
-    box-shadow: 4px 4px rgb(248, 246, 246);
-    text-align: center;
-    margin-top: 5%;
-}
-.product-item-h1 {
-    position: relative;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    font-size: 20px;
-    padding-top: 5%;
-    margin-bottom: 5%;
-}
-.product-item img {
-    width: 66%;
-    margin-bottom: 5%;
-} 
-.product-item-p {
-    color: white;
-    text-align: justify;
-    width: 75%;
-    padding-left: 13%;
-}
-.quantity {
-    display: inline-block;
-    color: white;
-    margin-left: 5%;
-    padding-top: 5%;
-    width: 35%;
-    text-align: left;
-}
-.cost{  
-    display: inline-block;
-    color: white;
-    margin-right: 5%;
-    padding-top: 5%;
-    width: 35%;
+.cart {
+    width: 200px;
     text-align: right;
 }
-
-.tocartbutton {
-    width: 50%;
-    text-decoration: none;
-    display: inline-block;
-    background: #E48900    ;
-    color: white;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 28px;
-    margin-top: 5%;
-    margin-bottom: 10%;
+.cart-logo {
+	position: relative;
+	width: 45px;
+	height: 45px;
 }
+
+
+/* CNTENT, mid of pages */
+.content-container {
+	/* width: 100vw; */
+	margin: 0 5%;
+}
+/* name of page for each page except index*/
+.content-title {
+	color: white;
+	text-transform: uppercase;
+	position: relative;
+	font-size: 40px;
+	text-decoration-line: underline;
+	text-decoration-style: double;
+	text-align: left;
+}
+/* centered text on index page */
+h1 {
+	color: white;
+	text-align: center;
+	text-shadow: 2px 2px red;
+	font-size: 80px;
+	padding-bottom: 7%;
+}
+
+/* index page benefits block in flexbox */
+.benefits {
+	display: flex;
+	/* max-width: 85%; */
+	
+	justify-content: space-between;
+}
+.benefits-text {
+	text-align: center;
+	
+}
+h2 {
+	max-width: 80%;
+	font-size: 24px;
+	color: black;
+	text-align: center;
+}
+p {
+	max-width: 80%;
+	font-size: 20px;
+	color: black;
+	text-align: left;
+	text-shadow: 4px 4px 4px red;
+}
+
 .product-grid {
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-position: relative;
-gap: 10%;
-justify-content: space-around;
-flex-direction: row;
-align-content: space-around;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10%;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: space-around;
+	margin-top: 5%;
+}
+.product-item {
+	width: 25%;
+	background-color: black;
+	box-shadow: 4px 4px rgb(248, 246, 246);
+	text-align: center;
+}
+.product-item-h1 {
+	position: relative;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-size: 20px;
+	padding-top: 5%;
+	margin-bottom: 5%;
+}
+.product-item img {
+	width: 66%;
+	margin-bottom: 5%;
+}
+.product-item-p {
+	color: white;
+	text-align: justify;
+	width: 75%;
+	padding-left: 13%;
+}
+.quantity {
+	display: inline-block;
+	color: white;
+	margin-left: 5%;
+	padding-top: 5%;
+	width: 35%;
+	text-align: left;
+}
+.cost {
+	display: inline-block;
+	color: white;
+	margin-right: 5%;
+	padding-top: 5%;
+	width: 35%;
+	text-align: right;
+}
+.tocartbutton {
+	width: 50%;
+	text-decoration: none;
+	display: inline-block;
+	background: #e48900;
+	color: white;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 28px;
+	margin-top: 5%;
+	margin-bottom: 10%;
+}
+
+/* Contacts */
+
+/* Testimonials */
+.testimonials-list {
+	margin-top: 5%;
+}
+.testimonial img {
+	border-radius: 50%;
+	align-items: baseline;
+}
+.testimonial-text {
+	/* display:inline; */
+	align-items: baseline;
+	margin-left: 20px;
+}
+.testimonial { 
+	margin:2% 0;
+	/* float:left; */
+	display: flex;
+    align-items: center;
+    flex-direction: row;
 }
