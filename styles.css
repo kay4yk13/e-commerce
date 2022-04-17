@@ -43,16 +43,16 @@ body {
     font-family: 'Roboto';
     font-style: normal;
     text-decoration: none;
-    vertical-align: middle;
-    left: 6px;
-
-    top: 8px;
+    vertic8l-align: middle;
+    left: 7px;
+    top: 9px;
 }
 .header-logo-text {
     position: relative;
     margin-left: 5px;
     text-decoration: none;
     font-style: normal;
+    font-family: 'Montserrat';
     color: black;
 }
 .navbar a {
@@ -84,7 +84,7 @@ body {
     height: 45px;
 }
 
-/* CNTENT, mid of pages */
+/* CONTENT, mid of pages */
 .content-container {
     /* width: 100vw; */
     margin: 0 5%;
@@ -98,9 +98,12 @@ body {
     text-decoration-line: underline;
     text-decoration-style: double;
     text-align: left;
+    font-family: 'Montserrat';
 }
 /* centered text on index page */
 h1 {
+    font-family: 'Montserrat';
+    text-transform: uppercase;
     color: white;
     text-align: center;
     text-shadow: 2px 2px red;
@@ -117,21 +120,23 @@ h1 {
 }
 .benefits-text {
     text-align: center;
+    font-family: 'Montserrat';
 }
 h2 {
     max-width: 80%;
     font-size: 24px;
     color: black;
     text-align: center;
+    font-family: 'Montserrat';
 }
 p {
     max-width: 80%;
-    font-size: 20px;
     color: black;
+    font-size: 20px;
+    font-family: 'Montserrat';
     text-align: left;
     text-shadow: 4px 4px 4px red;
 }
-
 .product-grid {
     display: flex;
     flex-wrap: wrap;
@@ -147,6 +152,7 @@ p {
     background-color: black;
     box-shadow: 4px 4px rgb(248, 246, 246);
     text-align: center;
+    font-family: 'Montserrat';
     margin-bottom: 4%;
 }
 .product-item-h1 {
@@ -192,6 +198,7 @@ p {
     color: white;
     text-transform: uppercase;
     font-size: 12px;
+    font-family: 'Montserrat';
     line-height: 28px;
     margin-top: 5%;
     margin-bottom: 10%;
@@ -205,6 +212,7 @@ p {
 /* Testimonials */
 .testimonials-list {
     margin-top: 5%;
+    font-family: 'Montserrat';
 }
 .testimonial img {
     border-radius: 50%;
