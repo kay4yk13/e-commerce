@@ -5,7 +5,6 @@ body {
     margin: 0 3vw;
 }
 
-/* весь хэдер с флексом */
 .header-container {
     margin: 2% 3%;
     /* width: 100vw; */
@@ -17,7 +16,6 @@ body {
     padding-bottom: 6%;
 }
 
-/* стили для лого, нава и корзины как дочерних элементов флексбокса header-container*/
 .header-childelement {
     text-align: center;
 }
@@ -43,7 +41,7 @@ body {
     font-family: 'Roboto';
     font-style: normal;
     text-decoration: none;
-    vertic8l-align: middle;
+    vertical-align: middle;
     left: 7px;
     top: 9px;
 }
@@ -207,6 +205,7 @@ p {
 /* Contacts */
 .adress {
     margin-top: 5%;
+    text-align: justify;
 }
 
 /* Testimonials */
