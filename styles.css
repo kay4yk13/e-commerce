@@ -135,7 +135,7 @@ p {
     text-align: left;
     text-shadow: 4px 4px 4px red;
 }
-.product-grid {
+#product-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
