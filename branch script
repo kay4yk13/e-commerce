@@ -1,0 +1,66 @@
+// PRODUCTS PAGE
+let cart = getCart() || []
+
+// Button on a product card
+// <button class="tocartbutton" onclick="addToCart(${product.id})">ADD TO CART</button>  
+
+function addToCart() {
+    if (product.id in cart array) {
+        return;
+    }
+    
+    let cartItem = products.find by id
+    cart.push.cartItem
+}
+
+// CART INTERFACE
+function getCart() {
+    return JSON.parse(localStorage.getItem("CART"))    
+}
+
+function updateCart() {
+    localStorage.setItem("CART", JSON.stringify(cart))
+}
+
+// ANY PAGE
+function renderСartWidget() {
+    document.getElementById (ID:item counter)
+    document.innerHTML ()
+    cart.forEach((cartItem) => {
+        let counter = item.weight * item.cost for each specific id
+    }
+}
+
+// CART PAGE
+function renderCartTable() {
+    document.innerHTML = `HTML templaye of profucts in cart table`
+}
+
+// CART PAGE + CATALOG PAGE
+function changeItemweight() {
+
+}
+
+
+
+
+//at any page and first of all
+renderСartWidget();
+
+//main cycle
+pageSpecificRender()
+    renderCatalogProducts()
+    //or
+    renderCartTable()   
+//when
+renderCatalogProducts()
+    getCart()
+    addToCart()
+        changeButtonState()
+    updateCart()
+    renderСartWidget();
+//when
+renderCartTable()
+    getCart()
+    changeItemweight()
+    updateCart()

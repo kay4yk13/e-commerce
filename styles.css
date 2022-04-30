@@ -112,8 +112,6 @@ h1 {
 /* index page benefits block in flexbox */
 .benefits {
     display: flex;
-    /* max-width: 85%; */
-
     justify-content: space-between;
 }
 .benefits-text {
@@ -154,25 +152,23 @@ p {
     margin-bottom: 4%;
 }
 .product-item-h1 {
-    position: relative;
     text-align: center;
     color: white;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 25px;
     padding-top: 5%;
     margin-bottom: 5%;
 }
 .product-item img {
-    width: 66%;
-    margin-bottom: 5%;
+    width: 75%;
 }
 .product-item-p {
     color: white;
     text-align: justify;
     width: 75%;
-    padding-left: 13%;
+    padding: 3% 13%;
 }
-.quantity {
+.weight {
     display: inline-block;
     color: white;
     margin-left: 5%;
@@ -195,9 +191,9 @@ p {
     background: #e48900;
     color: white;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 18px;
     font-family: 'Montserrat';
-    line-height: 28px;
+    line-height: 41px;
     margin-top: 5%;
     margin-bottom: 10%;
 }
@@ -228,4 +224,32 @@ p {
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+#cart-table {
+    margin-top: 3%;
+    align-self: left;
+    max-width: 80%;
+    font-family: 'Montserrat';
+}
+.cart-table-header {
+    font-family: 'Montserrat';
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 80%;
+}
+.cart-item {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.cart-item img {
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 4px;
 }
