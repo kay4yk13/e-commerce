@@ -44,7 +44,7 @@ const products = [
             "343Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         img: 'http://via.placeholder.com/150x150',
         weight: 100,
-        price: 1488,
+        price: 1488
     },
     {
         id: 5,
@@ -59,7 +59,7 @@ const products = [
 
 //done
 function productRenderMethod1() {
-    console.log('method1')
+    console.log('catalogRenderMethod1')
     let productsHTML = ''
 
     products.forEach(function (product) {
@@ -69,7 +69,7 @@ function productRenderMethod1() {
           <div class="product-item-p">${product.description}</div>
           <span class="weight">${product.weight} gr</span>
           <span class="cost">${product.price} $</span>
-          <a href="cart.html" class="tocartbutton">ADD to cart</a>
+          <div class="toCartButton" buttonId="${product.id}">ADD TO CART</div>
           </div>`
         productsHTML += template
     })
@@ -80,7 +80,7 @@ function productRenderMethod1() {
 
 //done
 function productRenderMethod2() {
-    console.log('method2')
+    console.log('catalogRenderMethod2')
     const parentNode = document.getElementById('products-grid')
 
     products.forEach((product) => {
@@ -92,60 +92,25 @@ function productRenderMethod2() {
             <div class="product-item-p">${product.description}</div>
             <span class="weight">${product.weight} gr</span>
             <span class="cost">${product.price} $</span>
-            <button class="tocartbutton" onclick="addToCart(${product.id})">ADD TO CART</button>`
+            <div class="toCartButton" buttonId="${product.id}">ADD TO CART</div>`
         parentNode.appendChild(productNode)
     })
 }
 
 //done
 function renderCatalogProducts() {
-    console.log('rendering catalog')
     if (Math.floor(Math.random() * 14 + 1) % 2 != 0) {
         productRenderMethod1()
     } else {
         productRenderMethod2()
     }
 }
-// done DETERMINE PAGE
-function getPageName() {
-    let path = window.location.pathname
-    let page = path.split('/').pop().slice(0, -5)
-    console.log(page)
-    return page
-}
-// done
-function pageSpecificRender() {
-    const page = getPageName()
-    if (page === 'cart') {
-        renderCartTable()
-    }
-    if (page === 'catalog') {
-        renderCatalogProducts()
-    }
-}
 
-// done TODO 1. define cart const array with 1 element => object:
-
-let cart = [
-    {
-        product_id: 2,
-        quantity: 5,
-    },
-    {
-        product_id: 4,
-        quantity: 10,
-    },
-    {
-        product_id: 3,
-        quantity: 3,
-    },
-]
-
-// TODO 2. Find product in products const by id
+let cart = JSON.parse(localStorage.getItem('CART')) || []
+updateCart()
 
 function getCartProducts() {
     let result = []
-    console.log(result)
     cart.forEach((cartItem, index) => {
         result[index] = cart[index]
         result[index].fields = products.find(
@@ -155,8 +120,6 @@ function getCartProducts() {
     return result
 }
 
-//done TODO 3. Dynamically render 1 row html. Without foreach
-
 function getCartProductSubtotal(cartProduct) {
     let result =
         parseInt(cartProduct.fields.price, 10) *
@@ -165,7 +128,8 @@ function getCartProductSubtotal(cartProduct) {
 }
 
 function renderCartTable() {
-    console.log('rendering cart')
+    console.log('cartRender')
+    getCart()
     let cartProducts = getCartProducts()
     let cartTableNode = document.getElementById('cart-table')
     cartProducts.forEach((resultProduct, index) => {
@@ -191,8 +155,52 @@ function renderCartTable() {
     })
 }
 
+function registerListenerToAddtoCart() {
+    let elements = document.getElementsByClassName('toCartButton')
+    elements = Array.from(elements)
+    elements.forEach((el) => {
+        el.addEventListener('click', handleAddPrductToCart)
+    })
+}
+function handleAddPrductToCart() {
+    getCart()
+    let productId = this.getAttribute('buttonId')
+    if (cart.find((cartItem) => cartItem.product_id == +productId)) {
+        return
+    }
+    let newCartProduct = { product_id: +productId, quantity: 1 }
+    cart.push(newCartProduct)
+    updateCart()
+    console.log(cart)
+}
+function updateCart() {
+    localStorage.setItem('CART', JSON.stringify(cart))
+}
+function getCart() {
+    let newEll = JSON.parse(localStorage.getItem('CART'))
+    cart.push.newEll
+}
+function clearCart() {
+    localStorage.clear()
+}
+
+//
+//
+//MAIN FUNCTION BLOCK
+function getPageName() {
+    let path = window.location.pathname
+    let page = path.split('/').pop().slice(0, -5)
+    return page
+}
+
 function main() {
-    pageSpecificRender()
-    // renderСartWidget()
+    const page = getPageName()
+    if (page === 'cart') {
+        renderCartTable()
+    }
+    if (page === 'catalog') {
+        renderCatalogProducts()
+        registerListenerToAddtoCart()
+    }
 }
 main()

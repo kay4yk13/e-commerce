@@ -13,6 +13,8 @@ function addToCart() {
     cart.push.cartItem
 }
 
+
+
 // CART INTERFACE
 function getCart() {
     return JSON.parse(localStorage.getItem("CART"))    
@@ -44,9 +46,6 @@ function changeItemweight() {
 
 
 
-//at any page and first of all
-renderСartWidget();
-
 //main cycle
 pageSpecificRender()
     renderCatalogProducts()
@@ -64,3 +63,50 @@ renderCartTable()
     getCart()
     changeItemweight()
     updateCart()
+
+
+
+subscribe
+    
+    + implement separate function registerListenerToAddtoCart
+        + event listener handle for event "click" on button "add to cart"
+        + get id from appropriate DOM element 
+        + push new objet to cart array with poduct_id = id, quantity = 1
+    + move logic of current page check to main function.
+    + event listener is registered on catalog page
+    + catalog page render adds custom atribute to DOM element "button"
+        + element product_id attribute match id from products array
+
+
+localStorage
+    - cart array is updated after "add to cart" pressed
+    - buttons +\- update quantity in cart array
+        - cart array stringify after each change and update data in LS
+            - event listener wait for changes in cart array
+    - cart page render get string from LS
+        - parse data from string in LS and rewrite cart array
+    - cart page render draw cart table based on updated cart array
+
+widget      
+    - implement widget render
+        -shows total cost
+    - widget get data from cart array (updated from LS)
+
+
+    renderCatalogProducts()
+        getCart()
+        registerListenerToAddtoCart() 
+        updateCart()
+    renderCartTable() 
+        getCart()
+        changeItemQuantity()
+        updateCart()
+    renderСartWidget()
+        getCart()
+    
+        
+
+
+
+
+
