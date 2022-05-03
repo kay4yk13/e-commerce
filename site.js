@@ -57,30 +57,7 @@ const products = [
     },
 ]
 
-//done
-function productRenderMethod1() {
-    console.log('catalogRenderMethod1')
-    let productsHTML = ''
-
-    products.forEach(function (product) {
-        let template = `<div class="product-item">
-          <div class="product-item-h1">${product.title}</div>
-          <img src="${product.img}" />
-          <div class="product-item-p">${product.description}</div>
-          <span class="weight">${product.weight} gr</span>
-          <span class="cost">${product.price} $</span>
-          <div class="toCartButton" buttonId="${product.id}">ADD TO CART</div>
-          </div>`
-        productsHTML += template
-    })
-
-    const parentNode = document.getElementById('products-grid')
-    parentNode.innerHTML = productsHTML
-}
-
-//done
-function productRenderMethod2() {
-    console.log('catalogRenderMethod2')
+function renderCatalogProducts() {
     const parentNode = document.getElementById('products-grid')
 
     products.forEach((product) => {
@@ -97,20 +74,9 @@ function productRenderMethod2() {
     })
 }
 
-//done
-function renderCatalogProducts() {
-    if (Math.floor(Math.random() * 14 + 1) % 2 != 0) {
-        productRenderMethod1()
-    } else {
-        productRenderMethod2()
-    }
-}
-
-let cart = JSON.parse(localStorage.getItem('CART')) || []
-updateCart()
-
 function getCartProducts() {
     let result = []
+    let cart = getCart()
     cart.forEach((cartItem, index) => {
         result[index] = cart[index]
         result[index].fields = products.find(
@@ -127,9 +93,28 @@ function getCartProductSubtotal(cartProduct) {
     return result
 }
 
+function getCartProductsTotalCost() {
+    let cart = getCartProducts()
+    let total = 0
+    let subtotal = 0
+    cart.forEach((cartProduct) => {
+        total += getCartProductSubtotal(cartProduct)
+    })
+    return total
+}
+
+function getCartTotalItems() {
+    let quantity = 0
+    let result = 0
+    let cart = getCart()
+    cart.forEach((cartProduct) => {
+        quantity = parseInt(cartProduct.quantity, 10)
+        result += quantity
+    })
+    return result
+}
+
 function renderCartTable() {
-    console.log('cartRender')
-    getCart()
     let cartProducts = getCartProducts()
     let cartTableNode = document.getElementById('cart-table')
     cartProducts.forEach((resultProduct, index) => {
@@ -150,55 +135,90 @@ function renderCartTable() {
             <div class="cart-totalcost">${getCartProductSubtotal(
                 cartProducts[index]
             )} $</div>
-            </div>`
+            <button onclick="removeFromCart(${
+                cartProducts[index].product_id
+            })">DELETE</button>`
         cartTableNode.appendChild(cartTableRowNode)
     })
+}
+function renderCartWidget() {
+    let totalItems = getCartTotalItems()
+    let totalCost = getCartProductsTotalCost()
+    document.getElementById(
+        'header-cart-item-counter'
+    ).innerHTML = `${totalItems}`
+    document.getElementById(
+        'header-cart-price-counter'
+    ).innerHTML = `${totalCost} $`
 }
 
 function registerListenerToAddtoCart() {
     let elements = document.getElementsByClassName('toCartButton')
     elements = Array.from(elements)
     elements.forEach((el) => {
-        el.addEventListener('click', handleAddPrductToCart)
+        el.addEventListener('click', addToCart)
     })
 }
-function handleAddPrductToCart() {
-    getCart()
+
+function addToCart() {
     let productId = this.getAttribute('buttonId')
-    if (cart.find((cartItem) => cartItem.product_id == +productId)) {
+    if (findProductIndexInCart(productId) !== -1) {
         return
     }
     let newCartProduct = { product_id: +productId, quantity: 1 }
-    cart.push(newCartProduct)
-    updateCart()
-    console.log(cart)
-}
-function updateCart() {
-    localStorage.setItem('CART', JSON.stringify(cart))
-}
-function getCart() {
-    let newEll = JSON.parse(localStorage.getItem('CART'))
-    cart.push.newEll
-}
-function clearCart() {
-    localStorage.clear()
+    let cart = getCart().concat(newCartProduct)
+    updateCart(cart)
 }
 
-//
-//
+function removeFromCart(product_id) {
+    let cart = getCart()
+    let cartIndex = findProductIndexInCart(product_id)
+    cart.splice(cartIndex, 1)
+    updateCart(cart)
+    location.reload()
+}
+
+function getCart() {
+    let cart = JSON.parse(localStorage.getItem('CART'))
+    if (cart === null) {
+        return []
+    }
+    return JSON.parse(localStorage.getItem('CART'))
+}
+
+function findProductIndexInCart(productId) {
+    let cart = getCart()
+    let item = cart.find((cartItem) => cartItem.product_id == +productId)
+    let index = cart.indexOf(item)
+    return index
+}
+function updateCart(cart) {
+    localStorage.setItem('CART', JSON.stringify(cart))
+    renderCartWidget()
+}
+
+function clearCart() {
+    updateCart([])
+    location.reload()
+}
+
 //MAIN FUNCTION BLOCK
 function getPageName() {
     let path = window.location.pathname
-    let page = path.split('/').pop().slice(0, -5)
-    return page
+    let PageName = path.split('/').pop().slice(0, -5)
+    return PageName
 }
 
 function main() {
-    const page = getPageName()
-    if (page === 'cart') {
+    renderCartWidget()
+
+    console.log(getCartProductsTotalCost())
+    console.log(getCartTotalItems())
+    const PageName = getPageName()
+    if (PageName === 'cart') {
         renderCartTable()
     }
-    if (page === 'catalog') {
+    if (PageName === 'catalog') {
         renderCatalogProducts()
         registerListenerToAddtoCart()
     }

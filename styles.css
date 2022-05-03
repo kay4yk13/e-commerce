@@ -7,10 +7,9 @@ body {
 
 .header-container {
     margin: 2% 3%;
-    /* width: 100vw; */
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: row;
     padding-bottom: 6%;
@@ -36,18 +35,16 @@ body {
     background: black;
 }
 .header-logo-icon-text {
-    position: absolute;
+    position: relative;
     color: white;
     font-family: 'Roboto';
     font-style: normal;
     text-decoration: none;
-    vertical-align: middle;
-    left: 7px;
-    top: 9px;
+    margin-top: 22%;
 }
 .header-logo-text {
     position: relative;
-    margin-left: 5px;
+    margin-left: 7px;
     text-decoration: none;
     font-style: normal;
     font-family: 'Montserrat';
@@ -80,12 +77,31 @@ body {
     position: relative;
     width: 45px;
     height: 45px;
+    text-decoration: none;
+}
+
+#header-cart-item-counter {
+    position: absolute;
+    color: white;
+    font-family: 'Roboto';
+    left: 14%;
+    top: -140%;
+    font-size: 20px;
+}
+#header-cart-price-counter {
+    position: relative;
+    margin-left: 20px;
+    text-decoration: none;
+    font-style: normal;
+    font-family: 'Montserrat';
+    color: black;
+    font-size: 24px;
+    vertical-align: 50%;
 }
 
 /* CONTENT, mid of pages */
 .content-container {
-    /* width: 100vw; */
-    margin: 0 5%;
+    margin: 0 3%;
 }
 /* name of page for each page except index*/
 .content-title {
@@ -196,6 +212,7 @@ p {
     line-height: 41px;
     margin-top: 5%;
     margin-bottom: 10%;
+    cursor: pointer;
 }
 
 /* Contacts */
@@ -214,13 +231,11 @@ p {
     align-items: baseline;
 }
 .testimonial-text {
-    /* display:inline; */
     align-items: baseline;
     margin-left: 20px;
 }
 .testimonial {
     margin: 2% 0;
-    /* float:left; */
     display: flex;
     align-items: center;
     flex-direction: row;

@@ -17,9 +17,9 @@
             <div class="header-childelement logo">
                 <a class="header-logo" href="index.html">
                     <div class="header-logo-icon-wrapper">
-                        <span class="header-logo-icon-text">SK</span>
+                        <div class="header-logo-icon-text">SK</div>
                     </div>
-                    <span class="header-logo-text">SuperKal</span>
+                    <div class="header-logo-text">SuperKal</div>
                 </a>
             </div>
             <div class="header-childelement nav">
@@ -32,15 +32,17 @@
                     >
                 </div>
             </div>
-            <div class="header-childelement cart">
+            <div id="cart" class="header-childelement cart">
                 <a class="cart-logo" href="cart.html"
-                    ><img src="cart-shopping-solid.svg" width="45px"
-                /></a>
+                    ><img src="cart-shopping-solid.svg" width="45px" />
+                    <span id="header-cart-item-counter"></span>
+                    <span id="header-cart-price-counter"></span>
+                </a>
             </div>
         </div>
-
+        </div>
         <div class="content-container">
-            <div class="content-title">Testiculous</div>
+            <div class="content-title">Testiculos</div>
             <div class="testimonials-list">
                 <div class="testimonial">
                     <img src="http://via.placeholder.com/150x150" />
@@ -104,5 +106,6 @@
                 </div>
             </div>
         </div>
+        <script src="site.js"></script>
     </body>
 </html>

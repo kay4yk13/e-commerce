@@ -66,7 +66,7 @@ renderCartTable()
 
 
 
-subscribe
+
     
     + implement separate function registerListenerToAddtoCart
         + event listener handle for event "click" on button "add to cart"
@@ -101,12 +101,60 @@ widget
         getCart()
         changeItemQuantity()
         updateCart()
-    renderСartWidget()
+    renderCartWidget()
         getCart()
     
         
 
+cart interface
+    + getCart()
+        decode and return Local storage cart
+        use JSON.parse()
+    + findProductIndexInCart(productId)
+        getCart()
+        find product index in cart array by id
+        return index    
+    + updateCart(cart)
+        stringify cart array
+        write to localStorage    
+    + addToCart(productId) //catalog page
+        create object { product_id: productId, quantity: 1 }
+        getCart()
+        findProductIndexInCart(productId)
+        updateCart()
+    + removeFromCart(productId) //cart page
+        dynamic button render with html attribute productId
+        html binding by event listener or direct function call
+        getCart()
+        findProductIndexInCart(productId)
+        remove by index
+        updateCart()
+        refresh page
+    + clearCart()
+        updateCart([])
+        refresh page
+total
+    getCartTotalPrice()
+        getCart()
+        forEach cart object
+            get price of each product by id
+            calculate total using quantity
+        return cart total price
+quantity
+    getCartTotalItems()
+        let result = 0;
+        getCart()
+        forEach cart object
+            add item.quantity to result
+        return result
+widget
+    renderCartWidget()
+        getCartTotalPrice()
+        getCartTotalItems()
+        find widget node by id
+            dynamically rendering using data above
 
-
++ - X
+    
 
 

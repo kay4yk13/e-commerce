@@ -10,17 +10,16 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Monda|Montserrat|Roboto"
         />
-
-        <title>cart</title>
+        <title>testimnials</title>
     </head>
     <body>
         <div class="header-container">
             <div class="header-childelement logo">
                 <a class="header-logo" href="index.html">
                     <div class="header-logo-icon-wrapper">
-                        <span class="header-logo-icon-text">SK</span>
+                        <div class="header-logo-icon-text">SK</div>
                     </div>
-                    <span class="header-logo-text">SuperKal</span>
+                    <div class="header-logo-text">SuperKal</div>
                 </a>
             </div>
             <div class="header-childelement nav">
@@ -33,16 +32,20 @@
                     >
                 </div>
             </div>
-            <div class="header-childelement cart">
+            <div id="cart" class="header-childelement cart">
                 <a class="cart-logo" href="cart.html"
-                    ><img src="cart-shopping-solid.svg" width="45px"
-                /></a>
+                    ><img src="cart-shopping-solid.svg" width="45px" />
+                    <span id="header-cart-item-counter"></span>
+                    <span id="header-cart-price-counter"></span>
+                </a>
             </div>
         </div>
 
         <div class="content-container">
             <div class="content-title">Your choise</div>
-
+            <button onclick="clearCart()" style="margin-top: 15px">
+                CLEAR
+            </button>
             <div id="cart-table">
                 <div class="cart-table-header" style="margin-top: 50px">
                     <span>Photo</span>
@@ -53,26 +56,7 @@
                 </div>
                 <hr />
             </div>
-            <!-- <div class="cart-item">
-                    <img src="http://via.placeholder.com/150x150" />
-                    <div class="cart-description">
-                        <div class="cart-product-text">GOVNO</div>
-                        <hr />
-                        <div class="cart-weight">20g</div>
-                    </div>
-                    <div class="cart-quantity">
-                        <div class="cart-table-quantity">5</div>
-                        <hr />
-                        <div class="cart-table-quantity-change">+\-</div>
-                    </div>
-                    <div class="cart-cost">11111</div>
-                    <div class="cart-totalcost">5555</div>
-                    </div>
-                    <div class="cart-item">
-                -->
         </div>
-        <button>BUY</button>
-        <button onclick="clearCart()">CLEAR LS</button>
         <script src="site.js"></script>
     </body>
 </html>
