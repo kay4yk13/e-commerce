@@ -141,6 +141,7 @@ function renderCartTable() {
         cartTableNode.appendChild(cartTableRowNode)
     })
 }
+
 function renderCartWidget() {
     let totalItems = getCartTotalItems()
     let totalCost = getCartProductsTotalCost()
@@ -192,6 +193,7 @@ function findProductIndexInCart(productId) {
     let index = cart.indexOf(item)
     return index
 }
+
 function updateCart(cart) {
     localStorage.setItem('CART', JSON.stringify(cart))
     renderCartWidget()
