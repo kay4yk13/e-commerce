@@ -1,0 +1,41 @@
+<template>
+  <div class="product-item">
+    <div class="product-item-h1">
+      {{ catalog_item.title }}
+    </div>
+    <img src="http://via.placeholder.com/150x150" />
+    <div class="product-item-p">
+      {{ catalog_item.description }}
+    </div>
+    <span class="weight">{{ catalog_item.weight }} gr</span>
+    <span class="cost">{{ catalog_item.price }} $</span>
+    <button class="to-cart-button" @click="addToCart">
+      ADD TO CART
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "CatalogItem",
+  props: {
+    catalog_item: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    addToCart() {
+      this.$emit("addToCart", this.catalog_item);
+    }
+  },
+  mounted() {
+    this.$set(this.catalog_item, "quantity", 1);
+  }
+};
+</script>
