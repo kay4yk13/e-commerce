@@ -61,7 +61,19 @@ let store = new Vuex.Store({
         weight: 20,
         price: 420
       }
-    ]
+    ],
+    home: {
+      titles: ["ECO POOPERS", "POSREDSTVENNOE QUALITY", "NO REFUND"],
+      text: `Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only
+        five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with
+        the release of Letraset sheets containing Lorem Ipsum passages, and
+        more recently with desktop publishing software like Aldus PageMaker
+        including versions of Lorem Ipsum.`
+    }
   },
   getters: {
     CART(state) {
@@ -69,20 +81,14 @@ let store = new Vuex.Store({
     },
     PRODUCTS(state) {
       return state.products;
+    },
+    TITLES(state) {
+      return state.home.titles;
     }
   },
   actions: {
     ADD_TO_CART({ commit }, product) {
       commit("PUSH_TO_CART", product);
-    },
-    CART_ITEM_REMOVE({ commit }, index) {
-      commit("REMOVE_FROM_CART", index);
-    },
-    INCREMENT_CART_ITEM({ commit }, index) {
-      commit("INCREMENT", index);
-    },
-    DECREMENT_CART_ITEM({ commit }, index) {
-      commit("DECREMENT", index);
     }
   },
   mutations: {
@@ -100,18 +106,6 @@ let store = new Vuex.Store({
         }
       } else {
         state.cart.push(product);
-      }
-    },
-    REMOVE_FROM_CART: (state, index) => {
-      state.cart.splice(index, 1);
-    },
-
-    INCREMENT: (state, index) => {
-      state.cart[index].quantity++;
-    },
-    DECREMENT: (state, index) => {
-      if (state.cart[index].quantity > 1) {
-        state.cart[index].quantity--;
       }
     }
   }

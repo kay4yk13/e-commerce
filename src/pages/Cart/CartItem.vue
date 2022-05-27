@@ -19,22 +19,22 @@
 export default {
   name: "CartItem",
   props: {
-    cart_item: {
-      type: Object,
-      default() {
-        return {};
-      }
-    }
+    cart_item: { required: true }
   },
   methods: {
     decrementItem() {
-      this.$emit("decrement");
+      if (this.cart_item.quantity > 1) {
+        this.cart_item.quantity--;
+      }
     },
     incrementItem() {
-      this.$emit("increment");
+      this.cart_item.quantity++;
     },
     removeFromCart() {
-      this.$emit("removeFromCart");
+      let index = this.$store.getters["CART"].indexOf(this.cart_item);
+      if (index !== -1) {
+        this.$store.getters["CART"].splice(index, 1);
+      }
     }
   },
   computed: {

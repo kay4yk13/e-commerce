@@ -1,8 +1,8 @@
 import Home from "../pages/Home.vue";
-import Catalog from "../pages/Catalog/Catalog.vue";
+import Catalog from "../pages/Catalog.vue";
 import Contacts from "../pages/Contacts.vue";
 import Testimonials from "../pages/Testimonials.vue";
-import Cart from "../pages/Cart/CartPage.vue";
+import Cart from "../pages/Cart.vue";
 
 export default [
   { path: "*", redirect: "/home" },
