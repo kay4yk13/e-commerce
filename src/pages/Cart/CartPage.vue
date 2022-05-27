@@ -24,25 +24,14 @@
 
 <script>
 import CartItem from "./CartItem.vue";
-// import {  mapGetters } from "vuex";
 import { mapActions } from "vuex";
 
 export default {
   components: { CartItem },
-  props: {
-    cart: {
-      type: Array,
-      default() {
-        return this.$store.getters["CART"];
-        // [];
-      }
-    }
-  },
-  data() {
-    return {};
-  },
   computed: {
-    // ...mapGetters(["CART"])
+    cart() {
+      return this.$store.getters["CART"];
+    }
   },
   methods: {
     ...mapActions([

@@ -5,40 +5,35 @@ import Testimonials from "../pages/Testimonials.vue";
 import Cart from "../pages/Cart/CartPage.vue";
 
 export default [
-  { path: "*", redirect: "/Home" },
+  { path: "*", redirect: "/home" },
   {
-    path: "/Home",
+    path: "/home",
     name: "Home",
     component: Home,
-    props: true,
     meta: { title: "Home" }
   },
   {
-    path: "/Catalog",
+    path: "/catalog",
     name: "Catalog",
     component: Catalog,
-    props: true,
     meta: { title: "Catalog" }
   },
   {
-    path: "/Contacts",
+    path: "/contacts",
     name: "Contacts",
     component: Contacts,
-    props: true,
     meta: { title: "Contacts" }
   },
   {
-    path: "/Testimonials",
+    path: "/testimonials",
     name: "Testimonials",
     component: Testimonials,
-    props: true,
     meta: { title: "Testimonials" }
   },
   {
-    path: "/Cart",
+    path: "/cart",
     name: "Cart",
     component: Cart,
-    props: true,
     meta: { title: "Cart" }
   }
 ];

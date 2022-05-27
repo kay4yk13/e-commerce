@@ -26,9 +26,6 @@ export default {
       }
     }
   },
-  data() {
-    return {};
-  },
   methods: {
     decrementItem() {
       this.$emit("decrement");

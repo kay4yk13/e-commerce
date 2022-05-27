@@ -26,16 +26,11 @@ export default {
       }
     }
   },
-  data() {
-    return {};
-  },
   methods: {
     addToCart() {
       this.$emit("addToCart", this.catalog_item);
+      this.$set(this.catalog_item, "quantity", 1);
     }
-  },
-  mounted() {
-    this.$set(this.catalog_item, "quantity", 1);
   }
 };
 </script>
