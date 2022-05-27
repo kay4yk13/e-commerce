@@ -6,25 +6,17 @@
         <span>Photo</span>
         <span>Description</span>
         <span>Quantity</span>
-        <span>Item Cost</span>
-        <span>Cost total</span>
+        <span>Item Cost <br />one/total</span>
+        <span>Actions</span>
       </div>
-      <CartItem
-        class="cart-item"
-        v-for="(item, index) in cart"
-        :key="item.id"
-        :cart_item="item"
-        @removeFromCart="removeFromCart(index)"
-        @increment="increment(index)"
-        @decrement="decrement(index)"
-      />
+      <p v-if="!cart.length">Go and buy smth</p>
+      <CartItem v-for="item in cart" :key="item.id" :cart_item="item" />
     </div>
   </div>
 </template>
 
 <script>
 import CartItem from "./Cart/CartItem.vue";
-import { mapActions } from "vuex";
 
 export default {
   components: { CartItem },
@@ -32,23 +24,26 @@ export default {
     cart() {
       return this.$store.getters["CART"];
     }
-  },
-  methods: {
-    ...mapActions([
-      "CART_ITEM_REMOVE",
-      "INCREMENT_CART_ITEM",
-      "DECREMENT_CART_ITEM"
-    ]),
-    removeFromCart(index) {
-      this.CART_ITEM_REMOVE(index);
-      console.log(index);
-    },
-    increment(index) {
-      this.INCREMENT_CART_ITEM(index);
-    },
-    decrement(index) {
-      this.DECREMENT_CART_ITEM(index);
-    }
   }
 };
 </script>
+<style>
+.cart-table {
+  margin-top: 5%;
+  font-family: "Montserrat";
+  width: 100%;
+}
+.cart-table-header > span {
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+}
+.cart-table-header {
+  font-family: "Montserrat";
+  flex-wrap: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>

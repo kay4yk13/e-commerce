@@ -18,4 +18,18 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+.header-container {
+  margin: 2% 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-bottom: 6%;
+}
+
+.header-childelement {
+  text-align: center;
+}
+</style>

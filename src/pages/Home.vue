@@ -22,3 +22,13 @@ export default {
   }
 };
 </script>
+<style>
+.benefits {
+  display: flex;
+  justify-content: space-between;
+}
+.benefits-text {
+  text-align: center;
+  font-family: "Montserrat";
+}
+</style>

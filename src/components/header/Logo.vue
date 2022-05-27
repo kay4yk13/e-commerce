@@ -16,3 +16,37 @@ export default {
   }
 };
 </script>
+<style>
+.header-logo {
+  width: 200px;
+  position: relative;
+  display: flex;
+  align-content: left;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+}
+.header-logo-icon-wrapper {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  background: black;
+}
+.header-logo-icon-text {
+  position: relative;
+  color: white;
+  font-family: "Roboto";
+  font-style: normal;
+  text-decoration: none;
+  margin-top: 22%;
+}
+.header-logo-text {
+  position: relative;
+  margin-left: 7px;
+  text-decoration: none;
+  font-style: normal;
+  font-family: "Montserrat";
+  color: black;
+}
+</style>
