@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 let store = new Vuex.Store({
   state: {
-    cart: [],
+    cart: JSON.parse(localStorage.getItem("LS_cart")) || [],
     products: [
       {
         id: 0,
@@ -75,6 +75,7 @@ let store = new Vuex.Store({
         including versions of Lorem Ipsum.`
     }
   },
+
   getters: {
     CART(state) {
       return state.cart;
@@ -89,6 +90,19 @@ let store = new Vuex.Store({
   actions: {
     ADD_TO_CART({ commit }, product) {
       commit("PUSH_TO_CART", product);
+      commit("UPDATE_LS");
+    },
+    INCREMENT({ commit }, cart_item) {
+      commit("INCREMENT_QTY", cart_item);
+      commit("UPDATE_LS");
+    },
+    DECREMENT({ commit }, cart_item) {
+      commit("DECREMENT_QTY", cart_item);
+      commit("UPDATE_LS");
+    },
+    REMOVE({ commit }, cart_item) {
+      commit("REMOVE_ITEM", cart_item);
+      commit("UPDATE_LS");
     }
   },
   mutations: {
@@ -102,13 +116,30 @@ let store = new Vuex.Store({
           }
         });
         if (!isProductExists) {
-          state.cart.push(product);
+          state.cart.unshift(product);
         }
       } else {
-        state.cart.push(product);
+        state.cart.unshift(product);
       }
+    },
+
+    INCREMENT_QTY: (state, cart_item) => {
+      cart_item.quantity++;
+    },
+    DECREMENT_QTY: (state, cart_item) => {
+      if (cart_item.quantity > 1) {
+        cart_item.quantity--;
+      }
+    },
+    REMOVE_ITEM: (state, cart_item) => {
+      let index = state.cart.indexOf(cart_item);
+      if (index !== -1) {
+        state.cart.splice(index, 1);
+      }
+    },
+    UPDATE_LS: (state, cart) => {
+      localStorage.setItem("LS_cart", JSON.stringify(state.cart));
     }
   }
 });
-
 export default store;

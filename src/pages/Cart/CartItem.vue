@@ -17,25 +17,24 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "CartItem",
   props: {
     cart_item: { required: true }
   },
+
   methods: {
-    decrementItem() {
-      if (this.cart_item.quantity > 1) {
-        this.cart_item.quantity--;
-      }
-    },
+    ...mapActions(["INCREMENT", "DECREMENT", "REMOVE"]),
     incrementItem() {
-      this.cart_item.quantity++;
+      this.INCREMENT(this.cart_item);
+    },
+
+    decrementItem() {
+      this.DECREMENT(this.cart_item);
     },
     removeFromCart() {
-      let index = this.$store.getters["CART"].indexOf(this.cart_item);
-      if (index !== -1) {
-        this.$store.getters["CART"].splice(index, 1);
-      }
+      this.REMOVE(this.cart_item);
     }
   },
   computed: {
